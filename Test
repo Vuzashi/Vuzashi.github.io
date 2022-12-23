@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Side Runner</title>
+    <style>
+      /* Add some basic styling for the game */
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #ddd;
+      }
+      canvas {
+        display: block;
+        margin: 0 auto;
+      }
+      /* Style the power-up and enemy objects */
+      .power-up {
+        background-color: green;
+      }
+      .enemy {
+        background-color: red;
+      }
+      /* Style the obstacle and miniboss objects */
+      .obstacle {
+        background-color: black;
+      }
+      .miniboss {
+        background-color: purple;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Create a canvas element for the game -->
+    <canvas id="game" width="400" height="600"></canvas>
+
+    <!-- Add some JavaScript to set up the game -->
+    <script>
+      const canvas = document.getElementById('game');
+      const ctx = canvas.getContext('2d');
+
+      // Set up the game objects and variables
+      let x = 0;
+      let y = 0;
+      let speed = 3;
+      let powerUps = [];
+      let enemies = [];
+      let obstacles = [];
+      let minibosses = [];
+      let elapsedTime = 0;
+
+      // Set up the game loop
+      function update() {
+        // Clear the canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Update the position of the game object
+        x += speed;
+
+        // Draw the game object
+        ctx.fillRect(x, y, 50, 50);
+
+        // Draw the power-up objects
+        powerUps.forEach(powerUp => {
+          ctx.fillRect(powerUp.x, powerUp.y, powerUp.width, powerUp.height);
+        });
+
+        // Draw the enemy objects
+        enemies.forEach(enemy => {
+          ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
+        });
+
+        // Draw the obstacle objects
+        obstacles.forEach(obstacle => {
+          ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+        });
+
+        // Draw the miniboss objects
+        minibosses.forEach(miniboss => {
+          ctx.fillRect(miniboss.
